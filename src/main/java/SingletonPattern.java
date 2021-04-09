@@ -1,3 +1,6 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * @author zhangjin
  * 单例模式：
@@ -8,6 +11,7 @@
  * 关键代码：构造函数是私有的。
  */
 public class SingletonPattern {
+    private static final Logger logger = LogManager.getLogger(SingletonPattern.class);
     /**
      * 懒汉，满足延迟加载，线程不安全or线程安全，效率低（synchronized getInstance函数）。
      * 饿汉，不满足延迟加载，线程安全，类加载时即实例化，容易产生垃圾对象。
@@ -37,6 +41,6 @@ public class SingletonPattern {
     }
 
     public void check(String input) {
-        System.out.println(input);
+        logger.trace(input);
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" monitorinterval="30">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="File" fileName="/home/lds/logs/detail.log">
+            <Pattern>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </Pattern>
+        </File>
+        <RollingFile name="RollingFile" fileName="/home/lds/logs/roll.log">
+            <Pattern>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </Pattern>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="SingletonPattern" level="trace" additivity="false">
+            <AppenderRef>
+                <Ref>Console</Ref>
+            </AppenderRef>
+        </Logger>
+        <Root level="info">
+            <AppenderRef>
+                <Ref>Console</Ref>
+            </AppenderRef>
+        </Root>
+    </Loggers>
+</Configuration>
+        <!--
+        配置文件优先级properties>yml>json>xml,在这个前提下log4j2-test.* > log4j2.*.
+        log4j2支持4种配置模式，除使用配置文件外，都是以编程方式实现：
+        1、通过创建一个 ConfigurationFactory 和 Configuration 接口的实现；
+        2、调用 Configuration 接口暴露的方法来在默认配置的基础上添加其他组件；
+        3、通过在内部 Logger 类上调用方法。
+        Configuration status设置log4j2自身的日志级别，
+        monitorinterval设置日志配置自动刷新间隔，单位为秒，最小5s。（用于不重启程序，更新日志级别）
+        https://logging.apache.org/log4j/2.x/manual/configuration.html
+        -->

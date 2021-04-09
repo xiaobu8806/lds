@@ -11,7 +11,12 @@ public class ConfigurationParse {
         if (args.length < 1) {
             throw new RuntimeException("args can't be null");
         }
-        logger.info("NTM");
+        logger.trace("trace");
+        logger.debug("debug");
+        logger.info("info");
+        logger.warn("warn");
+        logger.error("error");
+        logger.fatal("fatal");
         SingletonPattern pattern = SingletonPattern.getInstance();
         pattern.check(args[0]);
     }
